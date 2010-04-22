@@ -11,7 +11,6 @@ This is a template for new Django projects that [Thomas Welfley](http://cyprojec
 *These things are commented out by default. If you leave them commented out, you can get by without installing them. Similarly, if you'd like to make do without django_extensions or django_compress, comment out their corresponding lines in settings.py's INSTALLED_APPS list. I highly recommend against that though. For complicated django apps, these four extras will make your life much easier.
 
 ## Overview
-
 ### settings.py and local_settings.py
 I've broken settings.py into settings.py and local_settings.py. As you might assume based on the names, put settings that are specific to an instance of the code base in local_settings.py and put settings that are standard across all instances of the code base in settings.py. Don't commit local_settings.py to your repository because you'll be keeping passwords and such in it. Instead, keep local_settings.template.py updated with an example local config for your application (again, don't use real passwords).
 
@@ -25,7 +24,7 @@ django.contrib.admin and ulrs are enabled by default.
 The structure is fairly straightforward. You'll want to tell your repository to ignore assets/css/site.r[0-9]*.css and assets/js/site.r[0-9]*.js if you decide to use django-compress. On a related note, I use /assets/users/ to store user uploaded media. If you do the same, you'll probably also want to tell your repo to ignore all non-directories in assets/users/.
 
 #### Javascript
-javascript: By default we include the [jQuery form plugin](http://github.com/malsup/form) and a [Google Analytics plugin written by SquareFACTOR](http://squarefactor.com/words/2009/feb/13/google-analytics-jquery-plugin/). Note that we do not include jQuery itself. base.phtml instead links [Google's non-minified jQuery.js file](http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js) when in debug mode and [Google's minified jQuery.js file](http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js) when DEBUG==False.
+By default we include the [jQuery form plugin](http://github.com/malsup/form) and a [Google Analytics plugin written by SquareFACTOR](http://squarefactor.com/words/2009/feb/13/google-analytics-jquery-plugin/). Note that we do not include jQuery itself. base.phtml instead links [Google's non-minified jQuery.js file](http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js) when in debug mode and [Google's minified jQuery.js file](http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js) when DEBUG==False.
 
 #### assets/googlexxxxxxxxxxx.html, assets/robots.txt, assets/img/favicon.ico
 When you deploy your application, you'll want to configure your web server to serve all three of these files at the root of your application. Follow the links for a brief explanation of what they are:
@@ -41,13 +40,12 @@ base.phtml has markup in it that displays a warning message to users using IE 6 
 
 Aside from that, there isn't too much else to note. Be sure to read the comments in the templates (in particular, look at the big one at the end of base.phtml) and look to home.phtml for a nice example of using base.phtml to it's fullest.
 
+## Don't Hate us
 ### No apps directory
-There isn't an apps subdirectory in our template because we don't use one. The additional directory depth is unnecessary and often annoying, so we just do without it.
-
-That said, if you have a compelling argument for using an apps subdirectory, we'd be happy to hear it.
+There isn't an apps subdirectory in our template because we don't use one. The additional directory depth is unnecessary and often annoying, so we just do without it. That said, if you have a compelling argument for using an apps subdirectory, we'd be happy to hear it.
 
 ### Tabs vs. Spaces.
-We use tabs. Your shouldn't have any problem converting the files in our template if you prefer spaces.
+We use tabs. You shouldn't have any problem converting the files in our template if you prefer spaces.
 
 ## Step by step:
 1. Export project_template to wherever you need it to be.
