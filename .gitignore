@@ -1,0 +1,6 @@
+*.pyc
+local_settings.py
+site.log
+site.db
+site.r[0-9]*.css
+site.r[0-9]*.js
