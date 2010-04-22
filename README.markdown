@@ -37,12 +37,17 @@ When you deploy your application, you'll want to configure your web server to se
 ### templates/
 We use *.phtml* instead of *.html* for our templates so that we can tell our text editors to use different syntax highlighting rules for django templates. If that bothers you, all you need to do is rename the files to *.html, change home.phtml in urls.py, an the you should be good to go.
 
+base.phtml has markup in it that displays a warning message to users using IE 6 or below (see http://www.ie6nomore.com/ for additional information). If you intend to support IE 6, you'll need to remove that markup.
+
 Aside from that, there isn't too much else to note. Be sure to read the comments in the templates (in particular, look at the big one at the end of base.phtml) and look to home.phtml for a nice example of using base.phtml to it's fullest.
 
 ### No apps directory
 There isn't an apps subdirectory in our template because we don't use one. The additional directory depth is unnecessary and often annoying, so we just do without it.
 
 That said, if you have a compelling argument for using an apps subdirectory, we'd be happy to hear it.
+
+### Tabs vs. Spaces.
+We use tabs. Your shouldn't have any problem converting the files in our template if you prefer spaces.
 
 ## Step by step:
 1. Export project_template to wherever you need it to be.
@@ -58,7 +63,8 @@ That said, if you have a compelling argument for using an apps subdirectory, we'
 5. Tell your repository to ignore local_settings.py, assets/css/site.r[0-9]*.css, and assets/js/site.r[0-9]*.js
 6. By default, your app will generate a log called site.log when you use the logging library, and it will use site.css and site.js. I like to rename those to something that reflects the name of my application. For example, for a site where SITE_NAME="Match Strike", I'd rename those files to matchstrike.css, matchstrike.js, and matchstrike.log. If you'd like to do the same, rename site.css and site.js. Then change those file names in setting.py's COMPRESS_CSS and COMPRESS_JS vars. To change the name of the log file your site will create, change the filename property of the logging configuration in local_settings.py
 7. Replace img/favicon.ico with something more appropriate.
-8. Develop!
+8. Update the copyright information in base.phtml
+9. Develop!
 
 ## Copyright
 Copyright (c) 2010 Thomas Welfley. See [LICENSE](http://github.com/thomasw/matchstrike_django/blob/master/LICENSE) for details.
