@@ -26,7 +26,7 @@ django.contrib.admin and ulrs are enabled by default.
 The structure is fairly straightforward. You'll want to tell your repository to ignore assets/css/site.r[0-9]*.css and assets/js/site.r[0-9]*.js if you decide to use django-compress. On a related note, I use /assets/users/ to store user uploaded media. If you do the same, you'll probably also want to tell your repo to ignore all non-directories in assets/users/.
 
 #### Javascript
-javascript: By default we include the jQuery form plugin and a [Google Analytics plugin written by SquareFACTOR](http://squarefactor.com/words/2009/feb/13/google-analytics-jquery-plugin/). Note that we do not include jQuery itself. base.phtml instead links [Google's non-minified jQuery.js file](http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js) when in debug mode and [Google's minified jQuery.js file](http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js) when DEBUG==False.
+javascript: By default we include the [jQuery form plugin](http://github.com/malsup/form) and a [Google Analytics plugin written by SquareFACTOR](http://squarefactor.com/words/2009/feb/13/google-analytics-jquery-plugin/). Note that we do not include jQuery itself. base.phtml instead links [Google's non-minified jQuery.js file](http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js) when in debug mode and [Google's minified jQuery.js file](http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js) when DEBUG==False.
 
 #### assets/googlexxxxxxxxxxx.html, assets/robots.txt, assets/img/favicon.ico
 When you deploy your application, you'll want to configure your web server to serve all three of these files at the root of your application. Follow the links for a brief explanation of what they are:
@@ -36,7 +36,14 @@ When you deploy your application, you'll want to configure your web server to se
 * [assets/img/favicion.ico](http://en.wikipedia.org/wiki/Favicon)
 
 ### templates/
-We use *.phtml* instead of *.html* for our templates so that we can tell our text editors to do syntax highlighting for .phtml files specifically as django template files rather than as just HTML files. If that bothers you, all you need to do is rename the files to *.html, change home.phtml in urls.py, an the you should be good to go. Aside from that, there isn't too much else to note. Be sure to read the comments in the templates (in particular, look at the big one at the end of base.phtml) and look to home.phtml for a nice example of using base.phtml to it's fullest.
+We use *.phtml* instead of *.html* for our templates so that we can tell our text editors to use different syntax highlighting rules for django templates. If that bothers you, all you need to do is rename the files to *.html, change home.phtml in urls.py, an the you should be good to go.
+
+Aside from that, there isn't too much else to note. Be sure to read the comments in the templates (in particular, look at the big one at the end of base.phtml) and look to home.phtml for a nice example of using base.phtml to it's fullest.
+
+### No apps directory
+There isn't an apps subdirectory in our template because we don't use one. The additional directory depth is unnecessary and often annoying, so we just do without it.
+
+That said, if you have a compelling argument for using an apps subdirectory, we'd be happy to hear it.
 
 ## Step by step:
 
