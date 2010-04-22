@@ -1,6 +1,5 @@
 # Match Strike's Django Template
-
-This is a template for new Django projects that [Match Strike](http://matchstrike.net/) maintains.
+This is a template for new Django projects that [Thomas Welfley](http://cyproject.net/) at [Match Strike](http://matchstrike.net/) maintains.
 
 ## Requirements
 * django 1.2
@@ -46,7 +45,6 @@ There isn't an apps subdirectory in our template because we don't use one. The a
 That said, if you have a compelling argument for using an apps subdirectory, we'd be happy to hear it.
 
 ## Step by step:
-
 1. Export project_template to wherever you need it to be.
 2. Copy local_settings.template.py to local_settings.py.
 3. In settings.py change:
@@ -63,5 +61,4 @@ That said, if you have a compelling argument for using an apps subdirectory, we'
 8. Develop!
 
 ## Copyright
-
 Copyright (c) 2010 Thomas Welfley. See [LICENSE](http://github.com/thomasw/matchstrike_django/blob/master/LICENSE) for details.
