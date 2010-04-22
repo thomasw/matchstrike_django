@@ -1,0 +1,12 @@
+{% extends "base.phtml" %}
+{% block head %}{% with "/assets/" as MEDIA_URL %}{{ block.super }}{% endwith %}{% endblock %}
+{% block body_attributes %}{{block.super}} id="error_page"{% endblock %}
+{% block header %}
+	<h1><a href="/">Site Name</a></h1>
+{% endblock %}
+{% block content %}
+	<h2>500 error</h2>
+	<p>An error occurred while I fetched that page for you. Please try again.</p>
+	<p><a href="/">Home</a></p>
+{% endblock %}
+

@@ -1,0 +1,9 @@
+{% extends "base.phtml" %}
+{% block body_attributes %}{{block.super}} id="error_page"{% endblock %}
+{% block header %}
+	<h1><a href="/">Site Name</a></h1>
+{% endblock %}
+{% block content %}
+	<h2 class="error404">404 error</h2>
+	<p>Sorry, we couldn't find the page you are looking for.</p>
+{% endblock %}

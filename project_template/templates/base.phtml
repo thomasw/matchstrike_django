@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+		"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>{% block head %}{% load compressed %}
+	<title>{% block title %}{{SITE_NAME}}{% endblock %}</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	{% block links %}{% compressed_css 'main' %}
+	<link rel="icon" href="{{MEDIA_URL}}img/favicon.ico" type="image/x-icon" />
+	<link rel="image_src" href="{{MEDIA_URL}}img/icon.png" />{% endblock %}
+	{% block scripts %}{% if DEBUG %}<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>{% else %}<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>{% endif %}
+	{% compressed_js 'main' %}{% endblock %}
+	{% block meta %}<meta name="ROBOTS" content="{% block meta_robots %}ALL{% endblock %}" />
+	<meta name="description" content="{% block meta_description %}This is {{SITE_NAME}}.{% endblock %}" />
+	<meta name="author" content="{% block meta_author %}Match Strike{% endblock %}" />
+	<meta name="copyright" content="{% block meta_copyright %}Copyright 2010 Match Strike. All Rights Reserved.{% endblock %}" />{% endblock %}
+{% endblock %}</head>
+<body {% block body_attributes %}{% endblock %}>{% block body %}
+	{% block ie_six_error%}<!--[if lt IE 7]><div style='border: 1px solid #F7941D; background: #FEEFDA; text-align: center; clear: both; height: 75px; position: relative;'><div style='position: absolute; right: 3px; top: 3px; font-family: courier new; font-weight: bold;'><a href='#' onclick='javascript:this.parentNode.parentNode.style.display="none"; return false;'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-cornerx.jpg' style='border: none;' alt='Close this notice'/></a></div><div style='width: 640px; margin: 0 auto; text-align: left; padding: 0; overflow: hidden; color: black;'>      <div style='width: 75px; float: left;'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-warning.jpg' alt='Warning!'/></div><div style='width: 275px; float: left; font-family: Arial, sans-serif;'><div style='font-size: 14px; font-weight: bold; margin-top: 12px;'>You are using an outdated browser</div>        <div style='font-size: 12px; margin-top: 6px; line-height: 12px;'>For a better experience using this site, please upgrade to a modern web browser.</div></div><div style='width: 75px; float: left;'><a href='http://www.firefox.com' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-firefox.jpg' style='border: none;' alt='Get Firefox 3.5'/></a></div><div style='width: 75px; float: left;'><a href='http://www.browserforthebetter.com/download.html' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-ie8.jpg' style='border: none;' alt='Get Internet Explorer 8'/></a></div><div style='width: 73px; float: left;'><a href='http://www.apple.com/safari/download/' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-safari.jpg' style='border: none;' alt='Get Safari 4'/></a></div><div style='float: left;'><a href='http://www.google.com/chrome' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-chrome.jpg' style='border: none;' alt='Get Google Chrome'/></a></div></div></div><![endif]-->{% endblock %}
+	<div id="header">{% block header %}
+		<h1>{% block header_text %}<a href="{% url index %}">{{SITE_NAME}}</a>{% endblock %}</h1>
+		<ul id="nav">{% block nav %}
+			<li><a href="{% url index %}">Home</a></li>
+		{% endblock %}</ul><!-- end nav -->
+	{% endblock %}</div><!-- end header -->
+	<div id="content">{% block content %}
+		<p>Hi. This is {{SITE_NAME}}.</p>
+	{% endblock %}</div><!-- end content -->	
+	<div id="footer">{% block footer %}
+		<p>&copy; <a href="http://matchstrike.net/">Match Strike</a>. All rights reserved.</p>
+	{% endblock %}</div><!-- end footer -->
+{% endblock %}</body>
+</html>
+{% comment %} Everything from in base.phtml that can be overridden:
+	{{block.super}} is always the default content from the base template. 
+	Leave it out if you don't want that content, leave it in if you want to
+	simply append things to the default content. 
+	
+	To override the entire header tag:
+	{% block head %}{{block.super}}{% endblock %}
+
+	To change the title - ex: add ": sub-title" for "Site Name: Sub-title":
+	{% block title %}{{block.super}}: Descriptive sub-title{% endblock %}
+
+	To override all head link tags (css files, favicon, etc):
+	{% block links %}{{block.super}}{% endblock %}
+
+	To override all head script tags (jquery, site.js, etc):
+	{% block scripts %}{{block.super}}{% endblock %}
+	
+	Meta tags should be set appropriately for every page:
+	{% block meta_robots %}{{block.super}}{% endblock %}
+	{% block meta_description %}{{block.super}}{% endblock %}
+	{% block meta_author %}{{block.super}}{% endblock %}
+	{% block meta_copyright %}{{block.super}}{% endblock %}
+
+	Add html attributes to the body tag - ex: Give every template a unique ID for CSS fun.
+	{% block body_attributes %}{{block.super}} id="unique_template_id"{% endblock %}
+
+	To override the entire header div:
+	{% block header %}{{block.super}}: Descriptive sub-title{% endblock %}
+	
+	To change the header h1 text - ex: add ": sub-title" for "Site Name: Sub-title":
+	{% block header_text %}{{block.super}}{% endblock %}
+	
+	To add links to the navigation (this block is wrapped with <ul id="nav"></ul>, so only add LIs!)
+	{% block nav %}{{block.super}}{% endblock %}
+
+	To add content to the page.
+	{% block content %}{{block.super}}{% endblock %}
+
+	To override the footer text.
+	{% block footer %}{{block.super}}{% endblock %}
+{% endcomment %}
