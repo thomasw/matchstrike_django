@@ -3,12 +3,11 @@
 This is a template for new Django projects that [Match Strike](http://matchstrike.net/) maintains.
 
 ## Requirements
-
-django 1.2
-[django-command-extensions (django_extensions)](http://code.google.com/p/django-command-extensions/)
-[django-compress](http://south.aeracode.org/)
-[south*](http://south.aeracode.org/)
-[Django Debug Toolbar*](http://github.com/robhudson/django-debug-toolbar)
+* django 1.2
+* [django-command-extensions (django_extensions)](http://code.google.com/p/django-command-extensions/)
+* [django-compress](http://south.aeracode.org/)
+* [south*](http://south.aeracode.org/)
+* [Django Debug Toolbar*](http://github.com/robhudson/django-debug-toolbar)
 
 *These things are commented out by default. If you leave them commented out, you can get by without installing them. Similarly, if you'd like to make do without django_extensions or django_compress, comment out their corresponding lines in settings.py's INSTALLED_APPS list. I highly recommend against that though. For complicated django apps, these four extras will make your life much easier.
 
@@ -31,6 +30,7 @@ javascript: By default we include the jQuery form plugin and a [Google Analytics
 
 #### assets/googlexxxxxxxxxxx.html, assets/robots.txt, assets/img/favicon.ico
 When you deploy your application, you'll want to configure your web server to serve all three of these files at the root of your application. Follow the links for a brief explanation of what they are:
+
 * [googlexxxxxxxxxxx.html](http://www.google.com/support/webmasters/bin/answer.py?hl=en&answer=35658)
 * [robots.txt](http://en.wikipedia.org/wiki/Robots_exclusion_standard)
 * [assets/img/favicion.ico](http://en.wikipedia.org/wiki/Favicon)
@@ -38,7 +38,7 @@ When you deploy your application, you'll want to configure your web server to se
 ### templates/
 We use *.phtml* instead of *.html* for our templates so that we can tell our text editors to do syntax highlighting for .phtml files specifically as django template files rather than as just HTML files. If that bothers you, all you need to do is rename the files to *.html, change home.phtml in urls.py, an the you should be good to go. Aside from that, there isn't too much else to note. Be sure to read the comments in the templates (in particular, look at the big one at the end of base.phtml) and look to home.phtml for a nice example of using base.phtml to it's fullest.
 
-##Step by step:
+## Step by step:
 
 1. Export project_template to wherever you need it to be.
 2. Copy local_settings.template.py to local_settings.py.
