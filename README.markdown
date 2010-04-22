@@ -57,7 +57,7 @@ That said, if you have a compelling argument for using an apps subdirectory, we'
 	* *DATABASES*
 5. Tell your repository to ignore local_settings.py, assets/css/site.r[0-9]*.css, and assets/js/site.r[0-9]*.js
 6. By default, your app will generate a log called site.log when you use the logging library, and it will use site.css and site.js. I like to rename those to something that reflects the name of my application. For example, for a site where SITE_NAME="Match Strike", I'd rename those files to matchstrike.css, matchstrike.js, and matchstrike.log. If you'd like to do the same, rename site.css and site.js. Then change those file names in setting.py's COMPRESS_CSS and COMPRESS_JS vars. To change the name of the log file your site will create, change the filename property of the logging configuration in local_settings.py
-7. Replace img/favicon.png with something more appropriate.
+7. Replace img/favicon.ico with something more appropriate.
 8. Develop!
 
 ## Copyright
