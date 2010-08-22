@@ -26,7 +26,9 @@ SITE_NAME='New Site'
 USE_I18N = True
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '3ktcs-=%3^9p7en_lv1+a_$3ayk!$mgp4@+fts(q@(f3m)f8n7'
+# Moved this to local_settings.py if you plan to share this project in a
+# public repo.
+SECRET_KEY = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
 
 # List of all installed authentication backends
 AUTHENTICATION_BACKENDS = (
