@@ -89,6 +89,7 @@ SEND_BROKEN_LINK_EMAILS = False
 COMPRESS_CSS = {
 	'main': {
 		'source_filenames': (
+		    #'css/reset.css',
 			'css/site.css',
 		),
 		'output_filename': 'css/site.r?.css',
