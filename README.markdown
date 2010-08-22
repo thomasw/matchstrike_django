@@ -8,7 +8,7 @@ This is a template for new Django projects that [Thomas Welfley](http://cyprojec
 * [south*](http://south.aeracode.org/)
 * [Django Debug Toolbar*](http://github.com/robhudson/django-debug-toolbar)
 
-*These things are commented out by default. If you leave them commented out, you can get by without installing them. Similarly, if you'd like to make do without django_extensions or django_compress, comment out their corresponding lines in settings.py's INSTALLED_APPS list. I highly recommend against that though. For complicated django apps, these four extras will make your life much easier.
+*These things are commented out by default. If you leave them commented out, you can get by without installing them. Similarly, if you'd like to make do without django_extensions or django_compress, comment out their corresponding lines in settings.py's INSTALLED_APPS list. I highly recommend against that though. For complicated django apps, these four extras will make your life much easier. The included [requirements.txt](http://github.com/thomasw/matchstrike_django/blob/master/project_template/requirements.txt) file should allow you to easily install these requirements via [pip](http://pypi.python.org/pypi/pip).
 
 ## Overview
 ### settings.py and local_settings.py
