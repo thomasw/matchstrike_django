@@ -26,10 +26,9 @@ The structure is fairly straightforward. You'll want to tell your repository to 
 #### Javascript
 By default we include the [jQuery form plugin](http://github.com/malsup/form) and a [Google Analytics plugin written by SquareFACTOR](http://squarefactor.com/words/2009/feb/13/google-analytics-jquery-plugin/). Note that we do not include jQuery itself. base.phtml instead links [Google's non-minified jQuery.js file](http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js) when in debug mode and [Google's minified jQuery.js file](http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js) when DEBUG==False.
 
-#### assets/googlexxxxxxxxxxx.html, assets/robots.txt, assets/img/favicon.ico
-When you deploy your application, you'll want to configure your web server to serve all three of these files at the root of your application. Follow the links for a brief explanation of what they are:
+#### assets/robots.txt, assets/img/favicon.ico
+When you deploy your application, you'll want to configure your web server to serve both of these files at the root of your application. Follow the links for a brief explanation of what they are:
 
-* [googlexxxxxxxxxxx.html](http://www.google.com/support/webmasters/bin/answer.py?hl=en&answer=35658)
 * [robots.txt](http://en.wikipedia.org/wiki/Robots_exclusion_standard)
 * [assets/img/favicion.ico](http://en.wikipedia.org/wiki/Favicon)
 
