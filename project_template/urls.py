@@ -1,20 +1,18 @@
-from django.conf.urls.defaults import *
-from django.views.generic.simple import direct_to_template
 from django.conf import settings
-
+from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
+from django.views.generic.base import TemplateView
+from django.views.static import serve
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	# Example:
-	# (r'^project_template/', include('project_template.foo.urls')),
-	(r'^manage/doc/', include('django.contrib.admindocs.urls')),
-	(r'^manage/', include(admin.site.urls)),
-	(r'^assets/(?P<path>.*)$', 'django.views.static.serve', {'document_root':getattr(settings,'MEDIA_ROOT')}),
-	url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout')
+    url(r'^$', TemplateView.as_view(template_name='home.phtml'), name='index'),
+    #(r'appname/', include('appname.urls')),
+    url(r'^manage/', include(admin.site.urls)),
 )
 
-# Generic Views
-urlpatterns += patterns('',
-	url(r'^$', direct_to_template, {'template': 'home.phtml'}, name='index'),
-)
+if getattr(settings, 'DEBUG'):
+    urlpatterns += patterns('',
+        url(r'^assets/(?P<path>.*)$', serve, {'document_root':getattr(settings,'MEDIA_ROOT')}),
+    )
