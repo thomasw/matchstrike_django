@@ -1,116 +1,134 @@
+import logging
+import os
+
+SECRET_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+
 ADMINS = (
-	('Mr. Admin', 'info@test.tld'),
+    ('Mr. Admin', 'info@domain.tld'),
 )
 
 MANAGERS = ADMINS
 
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# On Unix systems, a value of None will cause Django to use the same
-# timezone as the operating system.
-# If running in a Windows environment this must be set to the same as your
-# system time zone.
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'site.sqlite',
+    },
+}
+
+SITE_NAME='Site'
+SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 TIME_ZONE = 'UTC'
-
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
-
 SITE_ID = 1
+USE_I18N = False
+USE_L10N = False
 
-SITE_NAME='New Site'
+MEDIA_ROOT = os.path.join(SITE_ROOT, 'assets')
+MEDIA_URL = '/assets/'
 
-# If you set this to False, Django will make some optimizations so as not
-# to load the internationalization machinery.
-USE_I18N = True
-
-# Make this unique, and don't share it with anybody.
-# Moved this to local_settings.py if you plan to share this project in a
-# public repo.
-SECRET_KEY = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-
-# List of all installed authentication backends
-AUTHENTICATION_BACKENDS = (
-	'django.contrib.auth.backends.ModelBackend',
+STATIC_ROOT = os.path.join(SITE_ROOT, 'assets/contrib')
+STATIC_URL = '/assets/contrib/'
+ADMIN_MEDIA_PREFIX = '/assets/contrib/admin/'
+STATICFILES_DIRS = ()
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-# List of callables that know how to import templates from various sources.
+TEMPLATE_DIRS = (os.path.join(SITE_ROOT, 'templates'),)
 TEMPLATE_LOADERS = (
-	'django.template.loaders.filesystem.Loader',
-	'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
 )
-
-# List of template context processors
-TEMPLATE_CONTEXT_PROCESSORS = (
-	'django.core.context_processors.auth',
-	'django.core.context_processors.debug',
-	'django.core.context_processors.i18n',
-	'django.core.context_processors.media',
-	'context_processors.default',
+TEMPLATE_CONTEXT_PROCESSORS =(
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.contrib.messages.context_processors.messages",
+    "context_processors.default"
 )
 
 MIDDLEWARE_CLASSES = (
-	'django.middleware.common.CommonMiddleware',
-	'django.contrib.sessions.middleware.SessionMiddleware',
-	'django.middleware.csrf.CsrfViewMiddleware',
-	'django.contrib.auth.middleware.AuthenticationMiddleware',
-	'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'urls'
 
 INSTALLED_APPS = (
-	'django.contrib.auth',
-	'django.contrib.contenttypes',
-	'django.contrib.sessions',
-	'django.contrib.sites',
-	'django.contrib.messages',
-	'django.contrib.admin',
-	'django_extensions',
-	#'south',
-	'compress',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.admin',
+    'django.contrib.staticfiles',
+    'django_extensions',
+    'south',
+    'compress',
+    'gunicorn',
 )
 
-# Login configuration
+EMAIL_SUBJECT_PREFIX = '[%s] ' % (SITE_NAME,)
+DEFAULT_FROM_EMAIL = 'info@domain.tld'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
+
+COMPRESS_CSS = {
+    'main': {
+        'source_filenames': (
+            #'css/reset.css',
+            'css/site.css',
+        ),
+        'output_filename': 'css/site.r?.css',
+    },
+}
+COMPRESS_JS = {
+    'main': {
+        'source_filenames': (
+            'js/csrf.js',
+            'js/googleAnalytics.js',
+            'js/form.js',
+            'js/site.js'
+        ),
+        'output_filename': 'js/site.r?.js',
+    },
+}
+COMPRESS = True
+COMPRESS_VERSION = True
+COMPRESS_AUTO = DEBUG
+
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
-# E-mail config
-EMAIL_SUBJECT_PREFIX = '[%s] ' % (SITE_NAME,)
-DEFAULT_FROM_EMAIL = 'info@matchstrike.net'
-SEND_BROKEN_LINK_EMAILS = False
-
-# Profile Configuration
-# AUTH_PROFILE_MODULE = "accounts.Profile"
-
-# djanog-compress settings.
-COMPRESS_CSS = {
-	'main': {
-		'source_filenames': (
-		    #'css/reset.css',
-			'css/site.css',
-		),
-		'output_filename': 'css/site.r?.css',
-    },
-}
-
-COMPRESS_JS = {
-	'main': {
-		'source_filenames': (
-			'js/googleAnalytics.js',
-			'js/form.js',
-			'js/site.js',
-		),
-		'output_filename': 'js/site.r?.js',
-	},
-}
-
-# Cache settings
-CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-
-# Import local settings.
 try:
     from local_settings import *
 except ImportError:
